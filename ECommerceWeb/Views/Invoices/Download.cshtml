@@ -1,0 +1,13 @@
+@model ECommerceWeb.Models.Invoice
+@{
+    ViewData["Title"] = "Invoice Details";
+}
+<h2>Invoice Details</h2>
+<p>Invoice #: @Model.InvoiceNumber</p>
+<p>Order #: @Model.OrderId</p>
+<p>Date: @Model.CreatedAt.ToLocalTime()</p>
+<p>Total: @Model.Total</p>
+@if (!string.IsNullOrEmpty(Model.PdfUrl))
+{
+    <p><a href="@Model.PdfUrl">Download PDF</a></p>
+}

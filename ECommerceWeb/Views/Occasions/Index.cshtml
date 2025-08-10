@@ -1,0 +1,21 @@
+@model IEnumerable<ECommerceWeb.Models.Occasion>
+@{
+    ViewData["Title"] = "My Occasions";
+}
+<h2>My Occasions</h2>
+<a asp-action="Create" class="btn btn-primary mb-2">Add Occasion</a>
+<table class="table">
+    <thead>
+        <tr><th>Title</th><th>Type</th><th>Date</th></tr>
+    </thead>
+    <tbody>
+        @foreach(var oc in Model)
+        {
+            <tr>
+                <td>@oc.Title</td>
+                <td>@oc.Type</td>
+                <td>@oc.Date.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    </tbody>
+</table>

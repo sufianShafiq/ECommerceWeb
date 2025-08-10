@@ -1,0 +1,30 @@
+@model ECommerceWeb.Models.Order
+@{
+    ViewData["Title"] = "Order Details";
+}
+<h2>Order Details</h2>
+<p>Order Date: @Model.OrderDate.ToLocalTime()</p>
+<p>Status: @Model.Status</p>
+<p>Total: @Model.Total</p>
+<table class="table">
+    <thead>
+        <tr><th>Product</th><th>Qty</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Items)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.UnitPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h3>Leave Feedback</h3>
+<form asp-action="LeaveFeedback" asp-route-id="@Model.Id" method="post">
+    <div class="mb-3">
+        <textarea name="feedback" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+</form>

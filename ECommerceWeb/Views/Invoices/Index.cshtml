@@ -1,0 +1,22 @@
+@model IEnumerable<ECommerceWeb.Models.Invoice>
+@{
+    ViewData["Title"] = "My Invoices";
+}
+<h2>My Invoices</h2>
+<table class="table">
+    <thead>
+        <tr><th>Invoice #</th><th>Order</th><th>Date</th><th>Total</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach(var inv in Model)
+        {
+            <tr>
+                <td>@inv.InvoiceNumber</td>
+                <td>@inv.OrderId</td>
+                <td>@inv.CreatedAt.ToLocalTime()</td>
+                <td>@inv.Total</td>
+                <td><a asp-action="Download" asp-route-id="@inv.Id" class="btn btn-sm btn-primary">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

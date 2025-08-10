@@ -1,0 +1,24 @@
+@model IEnumerable<ECommerceWeb.Models.WalletTransaction>
+@{
+    ViewData["Title"] = "My Wallet";
+    decimal balance = ViewBag.Balance ?? 0;
+}
+<h2>My Wallet</h2>
+<p>Balance: @balance</p>
+<a asp-action="AddCredit" class="btn btn-primary mb-2">Add Credit</a>
+<table class="table">
+    <thead>
+        <tr><th>Date</th><th>Type</th><th>Amount</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        @foreach(var tx in Model)
+        {
+            <tr>
+                <td>@tx.Timestamp.ToLocalTime()</td>
+                <td>@tx.Type</td>
+                <td>@tx.Amount</td>
+                <td>@tx.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
